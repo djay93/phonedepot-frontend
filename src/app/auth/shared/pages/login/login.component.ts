@@ -40,10 +40,10 @@ export class LoginComponent implements OnInit {
         let decodedJwtData = JSON.parse(decodedJwtJsonData)
         let role =  decodedJwtData.roles
         
-        if(role === 'ROLE_CLIENT')
-          this.router.navigate(['/']);
-        else
+        if(role === 'ROLE_ADMIN')
           this.router.navigate(['/admin/home']);
+        else
+          this.router.navigate(['/']);
       } else {
         Swal.fire('Error', 'The user is invalid', 'error');
       }
