@@ -56,6 +56,7 @@ export class UserSideComponent implements OnInit, OnChanges {
 
   createUser() {
     this.alterableUser = this.user.value;
+    this.alterableUser.phone = 0;
     this.userService.createUser(this.alterableUser).subscribe(() => {
       this.userPage.ngOnInit();
       this.clean();
@@ -64,6 +65,7 @@ export class UserSideComponent implements OnInit, OnChanges {
 
   editUsers() {
     this.alterableUser = this.user.value;
+    this.alterableUser.phone = 0;
     this.userService.editUsers(this.alterableUser, this.editUser.idUser!).subscribe(() => {
       this.userPage.ngOnInit();
       this.clean();
