@@ -23,11 +23,17 @@
       <div *ngIf="hideElements" class="buttons is-justify-content-center has-text-centered">
         <button
           (click)="createAccount()"
+          [disabled]="!signUpForm.valid"
           class="button is-rounded background-color-orange has-text-white is-size-6 m-2"
         >
           Create Account
         </button>
-        <a (click)="changeComponent()">Do you already have an account? Click here to login.</a>
+        <div class="has-text-centered">
+          <span *ngIf="!signUpForm.valid" class="form-text has-text-danger">Mandatory Fields Not Filled or Incorrect.</span>
+          <p *ngIf="!signUpForm.valid && signUpForm.get('username')?.hasError('notAvailable')" class="form-text has-text-danger">Username already exists.</p>
+          <p *ngIf="!signUpForm.valid && signUpForm.get('email')?.hasError('notAvailable')" class="form-text has-text-danger">Email already exists.</p>
+          <p *ngIf="!signUpForm.valid && signUpForm.get('password')?.hasError('minlength')" class="form-text has-text-danger">Password must be minimum of 6 chars.</p>
+        </div>
       </div>
     </div>
     <div class="login is-justify-content-center has-text-centered" *ngIf="hideLogin">

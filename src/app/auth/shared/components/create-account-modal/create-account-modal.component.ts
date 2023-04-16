@@ -53,14 +53,14 @@ export class CreateAccountModalComponent implements OnInit {
     {
       username: ['', Validators.required, [this.validatorUsername]],
       name: ['', Validators.required],
-      phone: ['', Validators.minLength(10)],
+      phone: ['', Validators.minLength(6)],
       email: [
         '',
         [Validators.required, Validators.pattern(this.validatorEmail.emailPattern)],
         [this.validatorEmail],
       ],
-      password: ['123456', [Validators.required]],
-      confirmPassword: ['123456', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
     },
     {
       validators: [this.validatorEmail.compareEqual('password', 'confirmPassword')],

@@ -18,6 +18,9 @@
 
       <div class="has-text-centered">
         <span *ngIf="!signUpForm.valid" class="form-text has-text-danger">Mandatory Fields Not Filled or Incorrect.</span>
+        <p *ngIf="!signUpForm.valid && signUpForm.get('username')?.hasError('notAvailable')" class="form-text has-text-danger">Username already exists.</p>
+        <p *ngIf="!signUpForm.valid && signUpForm.get('email')?.hasError('notAvailable')" class="form-text has-text-danger">Email already exists.</p>
+        <p *ngIf="!signUpForm.valid && signUpForm.get('password')?.hasError('minlength')" class="form-text has-text-danger">Password must be minimum of 6 characters.</p>
       </div>
     </div>
   </section>

@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/shared/pages/login/login.component';
 import { OrderComponent } from './auth/shared/pages/order/order.component';
 import { ProfileComponent } from './auth/shared/pages/profile/profile.component';
 import { SignupComponent } from './auth/shared/pages/signup/signup.component';
+import { VerifyComponent } from './auth/shared/pages/verify/verify.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [ValidarTokenGuard],
     canLoad: [ValidarTokenGuard],
+  },
+  {
+    path: 'verify',
+    component: VerifyComponent
   },
   {
     path: '**',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { SignUpRequest } from '../../interfaces/login.interfaces';
@@ -37,13 +37,13 @@ export class SignupComponent implements OnInit {
     {
       username: ['', Validators.required, [this.validatorUsername]],
       name: ['', Validators.required],
-      phone: ['', Validators.minLength(10)],
+      phone: ['', Validators.minLength(6)],
       email: [
         '',
         [Validators.required, Validators.pattern(this.validatorEmail.emailPattern)],
         [this.validatorEmail],
       ],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
     },
     {
@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit {
   createAccount() {
     this.createUser.name = this.signUpForm.value['name'];
     this.createUser.username = this.signUpForm.value['username'];
-    this.createUser.phone = this.signUpForm.value['phone'];
+    this.createUser.phone = 0;
     this.createUser.email = this.signUpForm.value['email'];
     this.createUser.password = this.signUpForm.value['password'];
     console.log(this.createUser);

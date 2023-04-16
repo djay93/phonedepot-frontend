@@ -29,6 +29,7 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { OrderItemMobileComponent } from './components/order-item-mobile/order-item-mobile.component';
 import { CreateAccountModalComponent } from './components/create-account-modal/create-account-modal.component';
 import { BillInfoComponent } from './pages/bill-info/bill-info.component';
+import { VerifyComponent } from './pages/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { BillInfoComponent } from './pages/bill-info/bill-info.component';
     OrderItemMobileComponent,
     CreateAccountModalComponent,
     BillInfoComponent,
+    VerifyComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule, SharedRoutingModule],
   exports: [HomeComponent],

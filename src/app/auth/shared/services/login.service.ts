@@ -55,4 +55,14 @@ export class LoginService {
       })
       .pipe(catchError((error) => of(error)));
   }
+
+  verifyAccount(email: string|null, otp: string|null): Observable<LoginResponse> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}` || '');
+
+    return this.http
+      .get<LoginResponse>(`${this._urlBackendApi}/user/verify?email=${email}&otp=${otp}`, {
+        headers
+      })
+      .pipe(catchError((error) => of(error)));
+  }
 }
