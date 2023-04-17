@@ -6,22 +6,26 @@
         <p class="primary-text title is-1-desktop is-3-tablet is-size-2-mobile">
             Welcome to Phonedepot by Amdocs!
         </p>
-        <p class="subtitle is-size-5 mt-1 has-text-success" *ngIf="userVerified">Congratulations, your account has been verified.</p>
-        <p class="subtitle is-size-5 mt-1" *ngIf="userVerified">
-            Please reset your password if required by using the form below or click this button to login. 
-            <a routerLink="/login" class="button is-link">Login</a>
-        </p>
-        <p class="subtitle is-size-5 mt-1 has-text-danger" *ngIf="!userVerified">
-            Unable to verify your account
-        </p>
-        <p class="subtitle is-size-5 mt-1" *ngIf="!userVerified">please contact our support team at dhanapal.jayapandi@amdocs.com.</p>
       </div>
 </div>
 
-<div class="column is-flex is-justify-content-center is-align-items-center is-align-content-center is-flex-grow-4"  *ngIf="userVerified">
+<div class="column is-flex is-justify-content-center is-align-items-center is-align-content-center is-flex-grow-4">
   <section class="section is-medium">
     <div class="card card-login p-4">
       <div [formGroup]="verifyForm" class="form">
+        <figure class="imagen-logo-login">
+            <img src="/assets/logo.png" alt="imagen" />
+          </figure>
+          <h1 class="is-size-4 mt-3 has-text-centered">Verify your OTP & Reset Password</h1>
+        <br />
+
+        <p class="control has-icons-left has-icons-right my-3">
+            <input formControlName="otp" class="input is-rounded border-orange" type="password" placeholder="OTP" />
+            <span class="icon is-small is-left">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+          </p>
+
         <p class="control has-icons-left my-3">
             <input formControlName="password" class="input is-rounded border-orange" type="password" placeholder="Password" />
             <span class="icon is-small is-left">

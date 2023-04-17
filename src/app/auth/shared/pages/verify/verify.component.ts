@@ -22,6 +22,7 @@ export class VerifyComponent implements OnInit {
 
   verifyForm: FormGroup = this.formBuilder.group(
     {
+      otp: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
     }
@@ -29,10 +30,8 @@ export class VerifyComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe(params => {
-        console.log('otp', this.route.snapshot.queryParamMap.get('otp'));
         console.log('email', this.route.snapshot.queryParamMap.get('email'));
-        this.verifyToken(this.route.snapshot.queryParamMap.get('email'), this.route.snapshot.queryParamMap.get('otp'));
-        console.log('last');
+        //this.verifyToken(this.route.snapshot.queryParamMap.get('email'), this.route.snapshot.queryParamMap.get('otp'));
       });
   }
 
@@ -51,18 +50,24 @@ export class VerifyComponent implements OnInit {
   }
 
   resetPassword() {
-    this.loginService.verifyAccount('', '').subscribe((data) => {
+    let email = this.route.snapshot.queryParamMap.get('email');
+    let otp = this.verifyForm?.value['otp']
+    let password = this.verifyForm?.value['password']
+    let confirmPassword = this.verifyForm?.value['confirmPassword']
+
+    this.loginService.verifyOTP(email, otp, password, confirmPassword).subscribe((data) => {
         console.log(data.message)
         if(data.message == 'The user is verified.') {
            this.userVerified = true
+           Swal.fire('OK', `OTP code is successfully verified for user with email ${this.route.snapshot.queryParamMap.get('email')}!`, 'success').then(() => window.location.href = '/');
         } else {
           this.userVerified = false 
+          Swal.fire('Error', 'Unable to verify the OTP code. Please contact our support team at dhanapal.jayapandi@amdocs.com', 'error');
         }
-        this.router.navigate(['login']);
         this.verifyForm.reset();
     },
     err => {
-       this.userVerified = false;
+       Swal.fire('Error', 'Unable to verify the OTP code', 'error');
     });
   }
 }
