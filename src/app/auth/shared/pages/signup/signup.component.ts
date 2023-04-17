@@ -66,15 +66,17 @@ export class SignupComponent implements OnInit {
     console.log(this.createUser);
     this.signUpService.saveUser(this.createUser).subscribe((response) => {
       if (response.statusCode == 200) {
-        this.loginService
-          .getLogin({
-            username: this.createUser.username,
-            password: this.createUser.password,
-          })
-          .subscribe((resp) => {
-            localStorage.setItem('token', resp.data?.tokens.access_token!);
-          });
-          Swal.fire('OK', 'The user has been created successfully', 'success').then(() => window.location.href = '/');
+        Swal.fire('OK', 'The user has been created successfully. Please check your email to verify your account', 'success').then(() => window.location.href = '/');
+        //   this.loginService
+        //     .getLogin({
+        //       username: this.createUser.username,
+        //       password: this.createUser.password,
+        //     })
+        //     .subscribe((resp) => {
+        //       localStorage.setItem('token', resp.data?.tokens.access_token!);
+        //     });
+        //     Swal.fire('OK', 'The user has been created successfully', 'success').then(() => window.location.href = '/');
+
       } else {
         Swal.fire('Error', 'The user could not be created', 'error');
       }

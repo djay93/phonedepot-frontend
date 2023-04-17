@@ -9,11 +9,12 @@
         <p class="subtitle is-size-5 mt-1 has-text-success" *ngIf="userVerified">Congratulations, your account has been verified.</p>
         <p class="subtitle is-size-5 mt-1" *ngIf="userVerified">
             Please reset your password if required by using the form below or click this button to login. 
-            <a routerLink="/login" class="is-size-5 m-3">Login</a>
+            <a routerLink="/login" class="button is-link">Login</a>
         </p>
         <p class="subtitle is-size-5 mt-1 has-text-danger" *ngIf="!userVerified">
-            Unable to verify your account.
+            Unable to verify your account
         </p>
+        <p class="subtitle is-size-5 mt-1" *ngIf="!userVerified">please contact our support team at dhanapal.jayapandi@amdocs.com.</p>
       </div>
 </div>
 
