@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  urlBackendApi: 'http://localhost:8081/api/v1',
-  //urlBackendApi: 'http://k8s-services-cce61f7386-936350103.us-east-1.elb.amazonaws.com/api/v1'
+  //urlBackendApi: 'http://localhost:8081/api/v1',
+  urlBackendApi: 'http://k8s-services-cce61f7386-936350103.us-east-1.elb.amazonaws.com/api/v1'
 };
 
 /*
