@@ -65,4 +65,24 @@ export class LoginService {
       })
       .pipe(catchError((error) => of(error)));
   }
+
+  verifyOTP(email: string|null, otp: string|null, pass1: string, pass2: string): Observable<LoginResponse> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}` || '');
+
+    return this.http
+      .get<LoginResponse>(`${this._urlBackendApi}/reset-password?email=${email}&otp=${otp}&newPassword=${pass1}&repeatNewPassword=${pass2}`, {
+        headers
+      })
+      .pipe(catchError((error) => of(error)));
+  }
+
+  resetPassword(email: string|null): Observable<LoginResponse> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}` || '');
+
+    return this.http
+      .get<LoginResponse>(`${this._urlBackendApi}/recover-password?email=${email}`, {
+        headers
+      })
+      .pipe(catchError((error) => of(error)));
+  }
 }

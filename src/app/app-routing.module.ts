@@ -9,6 +9,7 @@ import { OrderComponent } from './auth/shared/pages/order/order.component';
 import { ProfileComponent } from './auth/shared/pages/profile/profile.component';
 import { SignupComponent } from './auth/shared/pages/signup/signup.component';
 import { VerifyComponent } from './auth/shared/pages/verify/verify.component';
+import { ResetComponent } from './auth/shared/pages/reset/reset.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: 'verify',
     component: VerifyComponent
+  },
+  {
+    path: 'reset-password',
+    component: ResetComponent
   },
   {
     path: '**',

@@ -1,0 +1,42 @@
+<div class="column is-flex is-justify-content-center is-align-items-center is-align-content-center is-flex-grow-4">
+  <section class="section is-medium">
+    <div class="card card-login p-4">
+
+      <figure class="imagen-logo-login">
+        <img src="/assets/logo.png" alt="imagen" />
+      </figure>
+      <h1 class="is-size-4 mt-3 has-text-centered">Forgot your password?</h1>
+      <br />
+      
+      <div [formGroup]="verifyForm" class="form">
+        <p class="control has-icons-left has-icons-right my-3">
+          <input
+            formControlName="email"
+            class="input is-rounded border-orange"
+            type="text"
+            placeholder="email"
+            required="true"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </p>
+        <span *ngIf="isValid('email')" class="form-text has-text-danger">The field is required</span>      
+      </div>
+
+      <div class="buttons is-justify-content-center">
+        <button
+          (click)="resetPassword()"
+          [disabled]="!verifyForm.valid"
+          class="button is-rounded background-color-orange has-text-white is-size-5 m-3"
+        >
+          Send Reset Link
+        </button>
+      </div>
+
+      <div class="has-text-centered">
+        <span *ngIf="!verifyForm.valid" class="form-text has-text-danger">Mandatory Fields Not Filled or Incorrect.</span>
+      </div>
+    </div>
+  </section>
+</div>

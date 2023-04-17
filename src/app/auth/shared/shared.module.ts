@@ -30,6 +30,7 @@ import { OrderItemMobileComponent } from './components/order-item-mobile/order-i
 import { CreateAccountModalComponent } from './components/create-account-modal/create-account-modal.component';
 import { BillInfoComponent } from './pages/bill-info/bill-info.component';
 import { VerifyComponent } from './pages/verify/verify.component';
+import { ResetComponent } from './pages/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { VerifyComponent } from './pages/verify/verify.component';
     OrderItemMobileComponent,
     CreateAccountModalComponent,
     BillInfoComponent,
-    VerifyComponent
+    VerifyComponent,
+    ResetComponent
   ],
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule, SharedRoutingModule],
   exports: [HomeComponent],
